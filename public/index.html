@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0, viewport-fit=cover"/>
+    <meta name="theme-color" content="#000000">
+    <meta name="format-detection" content="telephone=yes"/>
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <script>
+        (function (win) {
+            var docEl = win.document.documentElement,
+                tid;
+            function refreshRem() {
+                var rem = 100 * (docEl.clientWidth / 750);
+                docEl.style.fontSize = rem + "px";
+                var actualSize = parseFloat(window.getComputedStyle(docEl)["font-size"]);
+                if (actualSize !== rem) {
+                    var remScaled = rem / (actualSize / rem);
+                    docEl.style.fontSize = remScaled + "px"
+                }
+            }
+
+            function dbcRefresh() {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 100)
+            }
+
+            win.addEventListener("resize", function () {
+                dbcRefresh()
+            }, false);
+            win.addEventListener("pageshow", function (e) {
+                if (e.persisted) {
+                    dbcRefresh()
+                }
+            }, false);
+            refreshRem();
+        })(window);
+    </script>
+    <style>
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, form, fieldset, input, textarea, p, blockquoteth, td {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //解决移动端滚动冲突 antd弹出picker actionSheet alert 会触发body style overflow:hidden  如果等于 禁用全局滚动事件
+    var _isScroll = false;
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    var element = document.querySelector('body');
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type == "attributes") {
+                if(mutation.target.dataset.overflow !== mutation.target.style.overflow){
+                    if(mutation.target.style.overflow==='hidden'){
+                        _isScroll=true;
+                    }else{
+                        _isScroll=false;
+                    }
+                }
+            }
+        });
+    });
+    document.body.addEventListener("touchmove", (e) => {
+        // 执行滚动回调
+        if(_isScroll){
+            e.preventDefault();
+        }
+    }, {
+        // 禁止 passive 效果
+        passive: false
+    });
+
+
+    observer.observe(element, {
+        attributes: true ,//configure it to listen to attribute changes
+        ttributeFilter: ['style']
+    });
+</script>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
+</html>

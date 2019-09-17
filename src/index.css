@@ -1,0 +1,174 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, form, fieldset, input, textarea, p, blockquoteth, td {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+html {
+    font-size: 12px;
+    font-family: "pingFang", "Microsoft yahe", sans-serif;
+    color: #333333;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    border: inherit;
+    letter-spacing: 1px;
+    /*overflow: hidden;*/
+    -webkit-text-size-adjust: none;
+    border: inherit;
+    height: 100vh;
+    background-color: #f4f4f4;
+    /*禁用长按复制*/
+    -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+
+    -webkit-user-select: none; /*webkit浏览器*/
+
+    -moz-user-select: none; /*火狐浏览器*/
+
+    -ms-user-select: none; /*IE浏览器*/
+
+    user-select: none; /*用户是否能够选中文本*/
+    /*padding-top: env(safe-area-inset-top);*/
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+button:focus {
+    outline: 0;
+}
+
+div {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 335px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 350px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 16px;
+    }
+}
+img{
+    width:100vw
+}
+
+/*
+@media screen and (min-width: 380px) {
+    html {font-size: 10px;}
+}
+
+@media screen and (min-width: 400px) {
+    html {font-size: 11px;}
+}
+
+@media screen and (min-width: 440px) {
+    html {font-size: 12px;}
+}
+
+@media screen and (min-width: 480px) {
+    html {font-size: 13px;}
+}
+
+@media screen and (min-width: 640px) {
+    html {font-size: 14px;}
+}
+*/
+
+/*progress 动画*/
+@-webkit-keyframes opacity {
+    3% {
+        fill-opacity: 1;
+    }
+
+    75% {
+        fill-opacity: 0;
+    }
+}
+
+@-moz-keyframes opacity {
+    3% {
+        fill-opacity: 1;
+    }
+
+    75% {
+        fill-opacity: 0;
+    }
+}
+
+@keyframes opacity {
+    3% {
+        fill-opacity: 1;
+    }
+
+    75% {
+        fill-opacity: 0;
+    }
+}
+
+:-moz-placeholder {
+    color: rgb(182, 182, 182);
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: rgb(182, 182, 182);
+    opacity: 1;
+}
+
+input:-ms-input-placeholder {
+    color: rgb(182, 182, 182);
+    opacity: 1;
+}
+
+input::-webkit-input-placeholder {
+    color: rgb(182, 182, 182);
+    opacity: 1;
+}
+
+.am-image-picker-list{
+    margin-bottom: 0 !important;
+}
+.am-image-picker-list .am-flexbox{
+    margin-bottom:0 !important;
+}
